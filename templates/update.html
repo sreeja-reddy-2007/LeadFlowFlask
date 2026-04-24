@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Lead</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-dark bg-dark px-4">
+    <span class="navbar-brand">LeadFlow</span>
+</nav>
+
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h3>Update Lead</h3>
+
+        <form method="POST">
+            <input class="form-control mb-2" name="name" value="{{ lead.name }}" required>
+            <input class="form-control mb-2" name="company" value="{{ lead.company }}" required>
+            <input class="form-control mb-2" name="linkedin" value="{{ lead.linkedin }}">
+
+            <select class="form-control mb-2" name="status">
+                <option {% if lead.status=='Not Contacted' %}selected{% endif %}>Not Contacted</option>
+                <option {% if lead.status=='Messaged' %}selected{% endif %}>Messaged</option>
+                <option {% if lead.status=='Replied' %}selected{% endif %}>Replied</option>
+                <option {% if lead.status=='Closed' %}selected{% endif %}>Closed</option>
+            </select>
+
+            <textarea class="form-control mb-2" name="notes">{{ lead.notes }}</textarea>
+
+            <label>Meeting Date</label>
+            <input type="date" name="meeting_date" value="{{ lead.meeting_date }}" class="form-control mb-2">
+
+            <label>Meeting Time</label>
+            <input type="time" name="meeting_time" value="{{ lead.meeting_time }}" class="form-control mb-3">
+
+            <button class="btn btn-warning">Update</button>
+            <a href="/" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
